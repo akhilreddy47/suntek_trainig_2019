@@ -1,0 +1,163 @@
+SUNTEX ITP BATCH 
+REDABOTHU AKHILREDDY
+17241A05H2
+akhilreddy7413@gmail.com
+
+
+ARRAY & SEARCHING & MATRIX
+-----------------------------------------------------------------------------------------------
+
+2) Give a n*n square matrix ,return an array of its diagonals
+#include<stdio.h>
+#include<stdlib.h>
+int*  diagonal(int *arr,int n,int a[])
+{
+    int i;
+    for(i=0;i<n;i++)
+    a[i]=*((arr+i*n)+i);
+    return a;
+}
+int main()
+{
+    int n,i,j;
+    scanf("%d",&n);
+    int arr[n][n],a[n],*b;
+    for(i=0;i<n;i++)
+    for(j=0;j<n;j++)
+    scanf("%d",&arr[i][j]);
+    b=diagonal(arr,n,a);
+    for(i=0;i<n;i++)
+    printf("%d  ",b[i]);
+}
+
+4) Given an unsorted Integer array , find the first repetitive positive Integer with O(n) time and use constant Space.
+#include<stdio.h>
+#include<stdlib.h>
+void repeated(int arr[],int n)
+{
+    int i;
+    for(i=0;i<n;i++)
+    {
+        if(arr[abs(arr[i])]>=0)
+        arr[abs(arr[i])]=-arr[abs(arr[i])];
+        else
+        {
+            printf("%d",abs(arr[i]));
+            return;
+        }
+    }
+}
+int main()
+{
+    int n,i;
+    scanf("%d",&n);
+    int arr[n];
+    for(i=0;i<n;i++)
+    scanf("%d",&arr[i]);
+    repeated(arr,n);
+}
+
+RECURSION
+----------------------------------------------------------------------------------------------------------
+1) Program for Fibonacci Series of given input number , should work for any kind of Input
+  a) Iterative
+
+#include<stdio.h>
+int main()
+{
+    int a,b,n,i,c;
+    printf("enter starting two numbers \n");
+    scanf("%d %d",&a,&b);
+    printf("enter how much elements in series you want to print");
+    scanf("%d",&n);
+    printf("Fibonacci series \n%d  %d  ",a,b);
+    for(i=0;i<n;i++)
+    {
+        c=a+b;
+        a=b;
+        b=c;
+        printf("%d  ",c);
+    }
+    return 0;
+} 
+
+   b) Recursive method
+#include<stdio.h>
+
+#include<stdlib.h>
+
+int fab(int b)
+
+{
+    
+	if(b<=1)
+  
+	return b;
+  
+	return fab(b-1)+fab(b-2);
+
+}
+
+int main()
+
+{
+   
+	 int i,a=0,n;
+   
+	 scanf("%d",&n);
+   
+	 for(i=0;i<n;i++)
+  
+	  {
+        
+		printf("%d  ",fab(a));
+  
+		 a++;
+  
+	  }
+
+}
+
+
+2) Program for Factorial of Given number , should work for any kind of input
+     a) Iterative
+#include<stdio.h>
+int main()
+{
+    int a,i;
+    long double prd=1;
+    printf("Enter number to find factorial\n");
+    scanf("%d",&a);
+    if(a<0)
+	{
+		printf("Not Possible");
+		return 1;
+	}
+    for(i=2;i<=a;i++)
+    prd*=i;
+    printf(" %Lf ",prd);
+    return 0;
+}
+
+	b) Recursive
+#include<stdio.h>
+#include<stdlib.h>
+long double factorial(int n)
+{
+	if(n<=1)
+	return 1;
+	else 
+	return n*factorial(n-1);
+}
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	if(n<0)
+	{
+		printf("not possible");
+		return 1;
+	}
+	printf("%Lf",factorial(n));
+	return 1;
+}
